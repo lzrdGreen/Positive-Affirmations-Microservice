@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positive Affirmations</title>
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        
+        button {
+            background-color: #d1e5f0;
+            border: 2px solid #2166ac;
+            cursor: pointer;
+            padding: 5px 9px;
+            border-radius: 3px;
+        }
+        #affirmation-display {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            color: yellow;
+            font-size: 30px;
+            background-color: #000000;
+        }
+        footer {
+            background-color: #2166ac;
+            height: 75px;
+        }
+        footer p {
+            font-size: 20px;
+            font-family: Tahoma, Arial, sans-serif;
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="https://wellnessandwellbeingforall.blogspot.com/2023/06/positive-affirmations-for-men-and-women.html" style="text-decoration: none; color: #2166ac;">Affirmation Generator</a></h1>
+    <p>Select a category to generate your affirmation:</p>
+    <div id="buttons">
+        <button onclick="generateAffirmation('general')">General</button>
+        <button onclick="generateAffirmation('success')">Success</button>
+        <button onclick="generateAffirmation('self-confidence')">Self-Confidence</button>
+    </div>
+    <div id="affirmation-display">Your affirmation will appear here.</div>
+    <button id="regenerate-button" style="display: none;" onclick="regenerate()">Regenerate</button>
+    <button id="farewell-button" style="display: none;" onclick="farewell()">Farewell</button>
+
+    <script>
+        let lastCategory = 'general';
+
+        function generateAffirmation(category) {
+            lastCategory = category;
+            fetch(`https://your-api-id.execute-api.your-region.amazonaws.com/prod/pa?category=${category}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('affirmation-display').textContent = data.affirmation;
+                    document.getElementById('regenerate-button').style.display = 'inline-block';
+                    document.getElementById('farewell-button').style.display = 'inline-block';
+                })
+                .catch(error => {
+                    console.error('Error fetching affirmation:', error);
+                    alert('Could not fetch an affirmation. Please try again.');
+                });
+        }
+
+        function regenerate() {
+            generateAffirmation(lastCategory);
+        }
+
+        function farewell() {
+            window.location.href = 'https://example.com/'; // Change to your desired URL or close logic.
+        }
+    </script>
+    <footer>
+        <p>&copy; 2024 <a href="https://www.linkedin.com/in/alexander-parshakov/" style="color: white; text-decoration: none;">O.Parshakov</a></p>
+       
+        <p>Dream it. Build it.</p>
+    </footer>
+</body>
+</html>
