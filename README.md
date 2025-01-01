@@ -1,6 +1,6 @@
 # Welcome to Positive Affirmations Microservice
 
-Here is a link to it: https://posaffirm.s3.eu-west-2.amazonaws.com/index.html
+Here is a link to it: https://dumh9e9ycmsox.cloudfront.net/
 
 Positive affirmations are short, upbeat phrases that help us stay positive. When we repeat them each day, they can reshape our thinking, pump up our confidence, and promote well-being.
 
